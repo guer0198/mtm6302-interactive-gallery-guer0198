@@ -1,15 +1,25 @@
-const picture = []
-picture.push(`
-<img src="images/pic1.jpeg" alt="Ottawa building">
-<img src="images/pic2.jpeg" alt="Brazil Storm">
-<img src="images/pic3.jpeg" alt="Jib">
-<img src="images/pic4.jpeg" alt="Stairs">
-<img src="images/pic5.jpeg" alt="Laura1">
-<img src="images/pic6.jpeg" alt="Laura2">
-<img src="images/pic7.jpeg" alt="Teather">
-<img src="images/pic8.jpeg" alt="Street art">
+const gallery = document.getElementById('gallery');
+const popup = document.getElementById('popup');
+const selectedImage = document.getElementById('selectedImage');
 
-`)
+const imageIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+const selectedIndex = [];
 
-const $picture = document.getElementById("container");
-$picture.innerHTML = picture.join('')
+imageIndex.forEach((i) => {
+    const image = document.createElement('img');
+    image.src = `/images/pic${i}.jpg`;
+    image.alt = `Photo number ${i} of Enrico Art Gallery`;
+    image.classList.add(`galleryImage`)
+
+    image.addEventListener('click', () =>{
+        popup.style.transform = `translateY(0)`;
+        selectedImage.src = `/images/pic${i}.jpg`;
+        selectedImage.alt = `Photo number ${i} of Enrico Art Gallery`;
+    })
+    gallery.appendChild(image);
+})
+
+popup.addEventListener('click', () => {
+    popup.src = '';
+    popup.alt = '';
+})
